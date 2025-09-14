@@ -62,7 +62,7 @@ export default function Portfolio() {
   useEffect(() => {
     if (!isDark || !matrixRef.current) return;
 
-    const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?/~`';
+    const matrixChars = `<script>alert('Hello')</script>`;
     const columns = Math.floor(window.innerWidth / 20);
     const matrixContainer = matrixRef.current;
 
@@ -74,8 +74,8 @@ export default function Portfolio() {
       const column = document.createElement('div');
       column.className = 'matrix-column';
       column.style.left = `${i * 20}px`;
-      column.style.animationDelay = `${Math.random() * 5}s`;
-      column.style.animationDuration = `${2 + Math.random() * 3}s`;
+      column.style.animationDelay = `${Math.random() * 8}s`;
+      column.style.animationDuration = `${6 + Math.random() * 4}s`;
       
       // Generate random characters for this column
       let text = '';
@@ -97,8 +97,8 @@ export default function Portfolio() {
             const column = document.createElement('div');
             column.className = 'matrix-column';
             column.style.left = `${i * 20}px`;
-            column.style.animationDelay = `${Math.random() * 5}s`;
-            column.style.animationDuration = `${2 + Math.random() * 3}s`;
+            column.style.animationDelay = `${Math.random() * 8}s`;
+            column.style.animationDuration = `${6 + Math.random() * 4}s`;
             
             let text = '';
             for (let j = 0; j < 50; j++) {
@@ -223,7 +223,6 @@ export default function Portfolio() {
           <header className="container header">
             <div className="header-flex">
               <div className="header-left">
-                <div className="avatar">PK</div>
                 <div>
                   <h1 style={{fontSize: 'clamp(28px, 4vw, 36px)'}}>
                     <>Pranav Kalidas <span className="accent">✦</span></>
@@ -234,6 +233,9 @@ export default function Portfolio() {
                   <p className="row muted" style={{marginTop:6}}>
                     <MapPin size={16}/> Kozhikode, Kerala — 673522
                   </p>
+                </div>
+                <div className="avatar">
+                  <img src="/src/assets/SOCAnal.jpeg" alt="Pranav Kalidas" className="avatar-image" />
                 </div>
               </div>
               <div className="links">
