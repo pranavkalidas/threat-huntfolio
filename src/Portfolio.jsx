@@ -235,7 +235,7 @@ export default function Portfolio() {
                   </p>
                 </div>
                 <div className="avatar">
-                  <img src="/src/assets/SOCAnal.jpeg" alt="Pranav Kalidas" className="avatar-image" />
+                  <img src="/SOCAnal.jpeg" alt="Pranav Kalidas" className="avatar-image" />
                 </div>
               </div>
               <div className="links">
