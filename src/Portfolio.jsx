@@ -31,15 +31,14 @@ import {
 } from "lucide-react";
 
 export default function Portfolio() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const matrixRef = useRef(null);
 
   useEffect(() => {
     // Ensure Tailwind dark mode works: requires tailwind.config.js -> darkMode: 'class'
-    const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const stored = localStorage.getItem('theme');
-    const initialDark = stored ? stored === 'dark' : prefers;
+    const initialDark = stored ? stored === 'dark' : true; // Default to dark theme
     document.documentElement.classList.toggle('dark', initialDark);
     document.body.classList.toggle('dark', initialDark); // extra safety for some setups
     setIsDark(initialDark);

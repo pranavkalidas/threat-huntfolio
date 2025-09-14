@@ -246,8 +246,10 @@ button {
 .pill:hover,
 .pill:active,
 .pill:focus {
-  background: white;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
   border-color: var(--amber);
+  background: var(--amber-soft);
 }
 
 /* Header block */
@@ -1285,6 +1287,15 @@ ul li::before {
 }
 
 [data-theme="dark"] .skill:hover {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  transform: translateY(-2px) scale(1.05);
+}
+
+[data-theme="dark"] .pill:hover,
+[data-theme="dark"] .pill:active,
+[data-theme="dark"] .pill:focus {
   background: rgba(0, 255, 0, 0.1);
   border-color: #00ff00;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
