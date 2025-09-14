@@ -54,6 +54,7 @@
   color: var(--text); 
   position: relative; 
   overflow-x: hidden;
+  z-index: 10;
 }
 
 html, body { 
@@ -68,6 +69,8 @@ html, body {
   max-width: 1200px; 
   margin: 0 auto; 
   padding: 0 16px; 
+  position: relative;
+  z-index: 10;
 }
 
 main {
@@ -186,7 +189,7 @@ button {
   left: -80px; 
   width: 320px; 
   height: 320px; 
-  background: rgba(251, 191, 36, 0.25); 
+  background: rgba(20, 20, 20, 0.08); 
 }
 
 .glow-b { 
@@ -194,7 +197,7 @@ button {
   bottom: -100px; 
   width: 320px; 
   height: 320px; 
-  background: rgba(253, 230, 138, 0.25); 
+  background: rgba(27, 27, 26, 0.08); 
 }
 
 /* Cards & Pills */
@@ -408,7 +411,7 @@ button {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
   border-color: var(--amber);
-  background: #fef3c7;
+  background: var(--amber-soft);
 }
 
 .skill:hover::before {
@@ -426,9 +429,10 @@ button {
 }
 
 [data-theme="dark"] .skill:hover {
-  background: rgba(245, 158, 11, 0.2);
-  border-color: var(--amber);
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+  background: rgba(0, 255, 0, 0.1);
+  border-color: #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  transform: translateY(-2px) scale(1.05);
 }
 
 /* Skills entrance animation */
@@ -474,7 +478,7 @@ button {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
   border-color: var(--amber);
-  background: #fef3c7;
+  background: var(--amber-soft);
 }
 
 .skill:hover::before {
@@ -492,9 +496,10 @@ button {
 }
 
 [data-theme="dark"] .skill:hover {
-  background: rgba(245, 158, 11, 0.2);
-  border-color: var(--amber);
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+  background: rgba(0, 255, 0, 0.1);
+  border-color: #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  transform: translateY(-2px) scale(1.05);
 }
 
 /* Stagger animation for skills container */
@@ -531,6 +536,13 @@ button {
   border: 1px solid var(--ring); 
   box-shadow: 0 4px 12px rgba(0,0,0,.12); 
   font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  background: var(--amber-strong);
 }
 
 .btn-ghost { 
@@ -539,6 +551,14 @@ button {
   background: var(--card); 
   border: 1px solid var(--border); 
   font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.1);
+  border-color: var(--amber);
+  background: var(--amber-soft);
 }
 
 @media (min-width: 640px) {
@@ -562,6 +582,17 @@ button {
   padding-left: 24px; 
 }
 
+.timeline-item {
+  position: relative;
+  margin-bottom: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 16px;
+  backdrop-filter: blur(6px);
+}
+
 .timeline::before { 
   content: ""; 
   position: absolute; 
@@ -577,6 +608,14 @@ button {
   background: rgba(245, 158, 11, 0.3); 
 }
 
+z[data-theme="dark"] .timeline-item {
+  background: var(--card);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.1),
+    inset 0 0 20px rgba(0, 255, 0, 0.05);
+}
+
 .dot { 
   position: absolute; 
   left: -20px; 
@@ -586,6 +625,7 @@ button {
   border-radius: 999px; 
   background: var(--amber); 
   box-shadow: 0 0 0 6px rgba(253, 230, 138, .7); 
+  z-index: 25;
 }
 
 [data-theme="dark"] .dot { 
@@ -720,8 +760,7 @@ ul li::before {
 }
 
 .education-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  /* Subtle hover effect removed */
 }
 
 .education-icon {
@@ -808,8 +847,7 @@ ul li::before {
 }
 
 .achievement-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  /* Subtle hover effect removed */
 }
 
 .achievement-icon {
@@ -981,11 +1019,350 @@ ul li::before {
   box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
 }
 
+/* Matrix Rain Effect for Dark Theme */
+[data-theme="dark"] .matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .matrix-column {
+  position: absolute;
+  top: -100%;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 14px;
+  opacity: 0.8;
+  animation: matrixFall linear infinite;
+  text-shadow: 0 0 5px #00ff00;
+}
+
+[data-theme="dark"] .matrix-column:nth-child(odd) {
+  color: #00ff41;
+  animation-duration: 3s;
+}
+
+[data-theme="dark"] .matrix-column:nth-child(even) {
+  color: #00ff00;
+  animation-duration: 4s;
+}
+
+[data-theme="dark"] .matrix-column:nth-child(3n) {
+  color: #39ff14;
+  animation-duration: 2.5s;
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Cyberpunk Glitch Effects */
+[data-theme="dark"] .glitch-text {
+  position: relative;
+  animation: glitch 2s infinite;
+}
+
+[data-theme="dark"] .glitch-text::before,
+[data-theme="dark"] .glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+[data-theme="dark"] .glitch-text::before {
+  animation: glitch-1 0.5s infinite;
+  color: #ff0040;
+  z-index: -1;
+}
+
+[data-theme="dark"] .glitch-text::after {
+  animation: glitch-2 0.5s infinite;
+  color: #00ffff;
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(-2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(-2px, -2px); }
+}
+
+/* Security Scan Lines */
+[data-theme="dark"] .scan-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 2px,
+    rgba(0, 255, 0, 0.03) 4px
+  );
+  animation: scanMove 0.1s linear infinite;
+}
+
+@keyframes scanMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* Holographic Card Effects */
+[data-theme="dark"] .card {
+  position: relative;
+  overflow: hidden;
+  z-index: 20;
+}
+
+[data-theme="dark"] .card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 0, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+[data-theme="dark"] .card:hover::before {
+  /* All hover effects removed */
+}
+
+/* Cyberpunk Border Glow */
+[data-theme="dark"] .card {
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.1),
+    inset 0 0 20px rgba(0, 255, 0, 0.05);
+}
+
+[data-theme="dark"] .card:hover {
+  /* All hover effects removed */
+}
+
+/* Terminal-style Text Cursor */
+[data-theme="dark"] .terminal-cursor::after {
+  content: '█';
+  animation: blink 1s infinite;
+  color: #00ff00;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Security Alert Pulse */
+[data-theme="dark"] .security-alert {
+  animation: securityPulse 2s infinite;
+}
+
+@keyframes securityPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
+  }
+}
+
+/* Data Stream Effect */
+[data-theme="dark"] .data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .data-stream::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(0, 255, 0, 0.1) 50%,
+    transparent 70%
+  );
+  animation: dataFlow 3s linear infinite;
+}
+
+@keyframes dataFlow {
+  0% { transform: translateX(-100%) translateY(-100%); }
+  100% { transform: translateX(100%) translateY(100%); }
+}
+
+/* Cyberpunk Button Effects */
+[data-theme="dark"] .btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #00ff00, #00ff41);
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+[data-theme="dark"] .btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+[data-theme="dark"] .btn-primary:hover::before {
+  left: 100%;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.6),
+    inset 0 0 20px rgba(0, 255, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Matrix-style Skills */
+[data-theme="dark"] .skill {
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+[data-theme="dark"] .skill:hover {
+  background: rgba(0, 255, 0, 0.1);
+  border-color: #00ff00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Terminal Window Effect */
+[data-theme="dark"] .terminal-window {
+  background: #000;
+  border: 2px solid #00ff00;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  position: relative;
+}
+
+[data-theme="dark"] .terminal-window::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 12px;
+  height: 12px;
+  background: #ff0000;
+  border-radius: 50%;
+  box-shadow: 20px 0 0 #ffff00, 40px 0 0 #00ff00;
+}
+
+[data-theme="dark"] .terminal-window::after {
+  content: 'root@security:~$';
+  position: absolute;
+  top: 30px;
+  left: 8px;
+  color: #00ff00;
+  font-size: 12px;
+}
+
+/* Hacker-style Loading */
+[data-theme="dark"] .hacker-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00ff00;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Cyberpunk Grid Overlay */
+[data-theme="dark"] .cyber-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: 
+    linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
 /* Card Entrance Animation */
 .animate-entrance {
+  opacity: 1; /* Start visible */
+  transform: translateY(0);
   animation: cardEntrance 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(30px);
+  animation-fill-mode: both;
 }
 
 @keyframes cardEntrance {
@@ -999,9 +1376,11 @@ ul li::before {
   }
 }
 
-/* Ensure animations work properly */
-.animate-entrance {
-  animation-fill-mode: both;
+/* Ensure animations work properly - fallback for immediate visibility */
+.animate-entrance.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
 }
 
 /* Sidebar Navigation */
@@ -1025,8 +1404,7 @@ ul li::before {
 }
 
 .sidebar-content:hover {
-  transform: translateX(-5px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  /* Subtle hover effect removed */
 }
 
 .sidebar-header {
@@ -1067,10 +1445,7 @@ ul li::before {
 }
 
 .sidebar-link:hover {
-  background: var(--amber-soft);
-  color: var(--amber-strong);
-  border-color: var(--amber);
-  transform: translateX(5px);
+  /* All hover effects removed */
 }
 
 .sidebar-link.active {
