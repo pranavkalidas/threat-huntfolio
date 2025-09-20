@@ -10,7 +10,7 @@ export const contact = {
 export const experience = [
   {
     role: "Security Analyst",
-    company: "Tech Mahindra (MSSP for SES Telecom)",
+    company: "Tech Mahindra",
     location: "Bengaluru",
     start: "Dec 2023",
     end: "Present",
