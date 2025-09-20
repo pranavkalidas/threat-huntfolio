@@ -4,7 +4,7 @@ export const contact = {
   linkedin: "https://linkedin.com/in/pranav-kalidas",
   location: "Kozhikode, Kerala — 673522",
   title: "Security Analyst",
-  summary: "Security Analyst with 1.8 years of hands-on SOC experience: monitoring, triaging, and responding to alerts. Skilled in threat detection, incident response, and remediation to safeguard enterprise infrastructure. Calm under pressure, collaborative with L2/L3, and consistently on-time against SLAs.",
+  summary: "Security Analyst with 2 years of hands-on SOC experience: monitoring, triaging, and responding to alerts. Skilled in threat detection, incident response, and remediation to safeguard enterprise infrastructure. Calm under pressure, collaborative with L2/L3, and consistently on-time against SLAs.",
 };
 
 export const experience = [
