@@ -15,6 +15,7 @@ export const experience = [
     start: "Dec 2023",
     end: "Present",
     bullets: [
+      "SOC Analyst as a Managed Security Service Provider (MSSP) supporting SES Telecom, a leading European telecom firm with 5000+ employees",
       "Performed alert triage using KQL across all shifts with due diligence.",
       "Initiated playbooks swiftly and escalated critical alerts when needed.",
       "Collaborated with L2/L3 to expedite resolutions and meet SLAs.",
@@ -47,16 +48,15 @@ export const skills = [
   "KQL triage",
   "Email analysis",
   "OSINT collection",
-  "Incident response",
+  "Incident Management",
   "Playbook execution",
-  "Java",
-  "Bash",
+  "Scripting",
   "Communication",
 ];
 
 export const education = {
   degree: "B.E. in Computer Science",
-  focus: "Cryptography, Cybersecurity & Computer Networks",
+  focus: "Cryptography & Cybersecurity",
   uni: "VTU",
   cgpa: "8.7 CGPA",
   start: "Aug 2019",
