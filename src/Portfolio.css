@@ -298,11 +298,12 @@ button {
 @media (min-width: 640px) {
   .header-flex {
     gap: 24px;
-    flex-direction: row;
+    flex-direction: column;
   }
 }
 
 .header-left { 
+  width: 100%;
   display: flex; 
   gap: 12px; 
   justify-content: space-between;
@@ -712,6 +713,7 @@ ul li::before {
 
 .role-title {
   font-weight: 600;
+  text-align: left;
 }
 
 .location-text {

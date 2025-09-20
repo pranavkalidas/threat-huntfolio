@@ -239,7 +239,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="links">
-                <button onClick={toggleTheme} className="pill theme-toggle-pill" aria-label="Toggle theme">
+                <button onClick={toggleTheme} className="pill theme-toggle-pill" aria-label="Toggle theme" style={{display: 'none'}}>
                   {isDark ? <Sun size={16}/> : <Moon size={16}/>} {isDark ? 'Light mode' : 'Dark mode'}
                 </button>
                 <a href="mailto:kalidas.pranav@gmail.com" className="pill"><Mail size={16}/> kalidas.pranav@gmail.com</a>
